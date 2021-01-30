@@ -12,4 +12,8 @@ class DeviceController extends Controller
     {
         return Device::all();
     }
+    function listID($id = null)
+    {
+        return $id?Device::find($id):Device::all();
+    }
 }
