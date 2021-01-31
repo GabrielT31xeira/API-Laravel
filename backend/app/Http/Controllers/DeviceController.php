@@ -8,17 +8,17 @@ use Illuminate\Http\Request;
 
 class DeviceController extends Controller
 {
-    function list()
+    public function list()
     {
         return Device::all();
     }
 
-    function listID($id = null)
+    public function listID($id = null)
     {
         return $id ? Device::find($id) : Device::all();
     }
 
-    function add(Request $request)
+    public function add(Request $request)
     {
         $inputs = $request->all();
 
@@ -30,14 +30,24 @@ class DeviceController extends Controller
         }
     }
 
-    function update(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $items = Device::findOrFail($id);
-
-        $items -> fill($request->all())->save();
+        $items->fill($request->all())->save();
 
         if ($request) {
             return ["Result" => "Data has been saved"];
+        } else {
+            return ["Result" => "error"];
+        }
+    }
+    
+    public function seach(Request $request, $name)
+    {
+        $result = Device::where('name', $name);
+
+        if ($result) {
+            return ["Result" => "Encontrado",$name];
         } else {
             return ["Result" => "error"];
         }

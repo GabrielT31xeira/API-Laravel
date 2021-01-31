@@ -24,4 +24,5 @@ Route::get("list/",[DeviceController::class,'list']);
 Route::get("list/{id}",[DeviceController::class,'listID']);
 Route::post("addDevice",[DeviceController::class,'add']);
 Route::put("update/{id}",[DeviceController::class,'update']);
+Route::get("seach/{name}",[DeviceController::class,'seach']);
 
