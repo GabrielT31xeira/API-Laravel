@@ -47,7 +47,7 @@ class DeviceController extends Controller
         $result = Device::where('name', $name);
 
         if ($result) {
-            return ["Result" => "Encontrado",$name];
+            return ["Result" => "Encontrado: ",$name];
         } else {
             return ["Result" => "error"];
         }
